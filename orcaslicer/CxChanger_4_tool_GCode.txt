@@ -1,0 +1,19 @@
+FOUR-TOOL ORCASLICER TEMPLATE - adapt to your local PRINT_START/PRINT_END
+
+Start G-code:
+PRINT_START BED=[first_layer_bed_temperature] INITIAL_TOOL=[initial_tool] T0_TEMP={nozzle_temperature_initial_layer[0]} T0_USED={is_extruder_used[0]} T1_TEMP={nozzle_temperature_initial_layer[1]} T1_USED={is_extruder_used[1]} T2_TEMP={nozzle_temperature_initial_layer[2]} T2_USED={is_extruder_used[2]} T3_TEMP={nozzle_temperature_initial_layer[3]} T3_USED={is_extruder_used[3]}
+
+Tool change:
+M104 S{nozzle_temperature[next_extruder]} T{next_extruder}
+T{next_extruder}
+
+End-print intentions:
+M400
+UNTOOL
+M104 S0 T0
+M104 S0 T1
+M104 S0 T2
+M104 S0 T3
+M140 S0
+
+Enable Ooze Prevention (~35 seconds is upstream starting guidance, not a guarantee), keep wipe tower ON for commissioning, and tune slicer retraction together with macro prime/retract. Do not configure T4 unless all required hardware/config exists.

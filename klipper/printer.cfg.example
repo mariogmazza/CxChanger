@@ -1,0 +1,43 @@
+# Integration notes only - NOT a complete printer.cfg.
+# Keep your proven Voron 2.4 R2 motion / TMC / MCU / probe configuration.
+# Include the revised macros only after reviewing the source and file names:
+# [include toolchange.cfg]
+# [include calibration.cfg]
+#
+# Four heater objects must exist and map to physical heaters/thermistors.
+# T0 uses the normal [extruder] heater + the only physical E stepper.
+# Additional sections may omit stepper pins when intentionally heater-only.
+# The following are placeholders, not a board-specific pin map.
+
+[extruder1]
+nozzle_diameter: 0.400
+filament_diameter: 1.75
+heater_pin: <T1_HEATER_PIN>
+sensor_type: <ACTUAL_THERMISTOR_TYPE>
+sensor_pin: <T1_THERMISTOR_PIN>
+min_temp: 0
+max_temp: <HOTEND_LIMIT>
+min_extrude_temp: <SAFE_MINIMUM_FOR_YOUR_MATERIALS>
+
+[extruder2]
+nozzle_diameter: 0.400
+filament_diameter: 1.75
+heater_pin: <T2_HEATER_PIN>
+sensor_type: <ACTUAL_THERMISTOR_TYPE>
+sensor_pin: <T2_THERMISTOR_PIN>
+min_temp: 0
+max_temp: <HOTEND_LIMIT>
+min_extrude_temp: <SAFE_MINIMUM_FOR_YOUR_MATERIALS>
+
+[extruder3]
+nozzle_diameter: 0.400
+filament_diameter: 1.75
+heater_pin: <T3_HEATER_PIN>
+sensor_type: <ACTUAL_THERMISTOR_TYPE>
+sensor_pin: <T3_THERMISTOR_PIN>
+min_temp: 0
+max_temp: <HOTEND_LIMIT>
+min_extrude_temp: <SAFE_MINIMUM_FOR_YOUR_MATERIALS>
+
+# Check heater/fan associations and electrical load before preheating parked tools.
+# Do not copy upstream example MCU/heater/probe pins into a Voron config.
